@@ -78,14 +78,27 @@ O GridSearch testou todas as combinações matematicamente possíveis para encon
 
 ---
 
-## 6. 📊 Conclusão e Insights
+## 6. 📈 Interpretação dos Resultados e Insights de Negócio
 
-Após a execução dos testes e avaliação das matrizes de confusão, concluímos que:
+Atendendo ao objetivo de automatizar a triagem manual em cooperativas, realizamos uma análise aprofundada dos resultados obtidos pelos modelos:
 
-1. **Alta Acurácia:** É possível classificar variedades de trigo com precisão superior a 90% utilizando apenas suas medidas geométricas.
-2. **Distinção das Classes:** A variedade **Rosa** é a mais fácil de identificar, geralmente apresentando área e perímetro maiores. As variedades **Kama** e **Canadian** possuem algumas sobreposições sutis, onde ocorreram os poucos erros de classificação.
-3. **Importância do Pré-processamento:** A normalização dos dados foi um passo crítico para o sucesso dos modelos KNN e SVM.
+### 1. Desempenho Comparativo
+* **SVM e Random Forest:** Ambos apresentaram desempenho superior (geralmente acima de 92% de acurácia). O **SVM com Kernel Linear** se destacou, indicando que as características físicas dos grãos possuem separação linear clara em um espaço multidimensional.
+* **KNN:** Embora eficaz, teve desempenho ligeiramente inferior, provavelmente devido à sensibilidade a *outliers* ou fronteiras de decisão menos definidas entre grãos de tamanhos intermediários.
 
+### 2. Análise da Matriz de Confusão (Onde o modelo erra?)
+Ao analisar os erros, percebemos um padrão comportamental consistente com a realidade física:
+* **Variedade Rosa:** O modelo acerta quase 100% dos casos. **Motivo:** Esta é a variedade fisicamente maior (maior área e perímetro). É fácil para a máquina (e para humanos) distingui-la das demais.
+* **Confusão Kama vs. Canadian:** A maioria dos erros do modelo ocorre entre estas duas variedades. **Insight:** Isso revela que estas espécies possuem características geométricas muito similares. No processo manual, é provável que especialistas humanos também cometam erros justamente nessas duas classes, o que justifica o uso da IA para reduzir a fadiga e padronizar a decisão.
+
+### 3. Impacto no Negócio (A Solução para a Cooperativa)
+Conectando os dados ao problema real da cooperativa agrícola:
+* **Eficiência Operacional:** O modelo é capaz de classificar centenas de grãos em milissegundos, tarefa que levaria minutos ou horas para um humano.
+* **Redução de Custo:** A automação permite que os especialistas foquem em tarefas de maior valor agregado, deixando a triagem repetitiva para o algoritmo.
+* **Confiabilidade:** A consistência do modelo (acurácia > 90%) garante que a padronização dos lotes de trigo seja mantida, valorizando o produto final da cooperativa no mercado.
+
+### Veredito Final
+A implementação do modelo **SVM Otimizado** é a recomendação final para a solução tecnológica, pois equilibra alta precisão com baixo custo computacional, resolvendo o gargalo de classificação manual da cooperativa.
 ---
 
 ## 💻 Como Executar o Projeto
